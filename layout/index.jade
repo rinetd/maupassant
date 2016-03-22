@@ -12,9 +12,9 @@ block content
         a(href=url_for(post.path))
           +title(post)
       .post-meta= post.date.format(config.date_format)
-      if theme.duoshuo
+      if duoshuo
         a.ds-thread-count(data-thread-key=post.path, href=url_for(post.path) + '#comments')
-      if theme.disqus
+      if disqus
         a.disqus-comment-count(data-disqus-identifier=post.path, href=url_for(post.path) + '#disqus_thread')
       if post.description
         .post-content
@@ -34,5 +34,5 @@ block content
         a(href=url_for(post.path))= __('Readmore')
 
   include _partial/paginator
-  if theme.disqus
-    script(id='dsq-count-scr', src='//#{theme.disqus}.disqus.com/count.js', async)
+  if disqus
+    script(id='dsq-count-scr', src='//#{disqus}.disqus.com/count.js', async)

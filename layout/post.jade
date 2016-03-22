@@ -12,14 +12,14 @@ block content
         span.category
           for category in page.categories.toArray()
             a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
+      if busuanzi == true
         script(src='https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js', async)
         span#busuanzi_container_page_pv= ' | '
           span#busuanzi_value_page_pv
           span= ' ' + __('Hits')
-    if theme.duoshuo
+    if duoshuo
       a.ds-thread-count(data-thread-key=page.path, href=url_for(page.path) + '#comments')
-    if theme.disqus
+    if disqus
       a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
     if page.toc
       div(class='clear')
@@ -28,12 +28,12 @@ block content
           != toc(page.content)
     .post-content
       != page.content
-    if theme.shareto == true
+    if shareto == true
       script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
       a.article-share-link(data-url='#{page.permalink}', data-id='#{page._id}')= __('shareto')
     include _partial/tag
     include _partial/post_nav
-    if theme.duoshuo
+    if duoshuo
       div(class='ds-share flat' data-thread-key=page.path, data-title=page.title, data-url=page.permalink)
          .ds-share-inline
             ul.ds-share-icons-16
